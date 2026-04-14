@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, statSync, existsSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
-const root = process.cwd();
+const root = path.dirname(new URL(import.meta.url).pathname);
 const htmlFiles = [];
 
 function walk(dir) {
