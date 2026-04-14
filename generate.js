@@ -21,13 +21,13 @@ const FAVICON_INLINE = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100
 
 // ── NAV CONFIG ──
 const NAV_ITEMS = [
-  { label: "Medicare Parts", href: "./pages/what-is-medicare" },
-  { label: "Medicare Advantage", href: "./pages/best-medicare-advantage-plans" },
-  { label: "Medigap", href: "./pages/what-is-medigap" },
-  { label: "Drug Coverage", href: "./pages/medicare-part-d-costs" },
-  { label: "Enrollment", href: "./pages/when-to-enroll-in-medicare" },
-  { label: "Tools", href: "./pages/medicare-premium-calculator" },
-  { label: "About", href: "./about" },
+  { label: "Medicare Parts", href: "./pages/what-is-medicare.html" },
+  { label: "Medicare Advantage", href: "./pages/best-medicare-advantage-plans.html" },
+  { label: "Medigap", href: "./pages/what-is-medigap.html" },
+  { label: "Drug Coverage", href: "./pages/medicare-part-d-costs.html" },
+  { label: "Enrollment", href: "./pages/when-to-enroll-in-medicare.html" },
+  { label: "Tools", href: "./pages/medicare-premium-calculator.html" },
+  { label: "About", href: "./about.html" },
 ];
 
 // ── HELPER FUNCTIONS ──
@@ -35,14 +35,7 @@ function navHTML(prefix, activePage) {
   return NAV_ITEMS.map(item => {
     let href = item.href;
     if (prefix === "../") {
-      href = href.replace("./pages/", "./").replace("./about", "../about");
-    } else if (prefix === "./") {
-      // root pages
-    }
-    if (prefix === "../") {
-      href = item.href.replace("./pages/", "./").replace("./about", "../about");
-    } else {
-      href = item.href;
+      href = item.href.replace("./pages/", "./").replace("./about.html", "../about.html");
     }
     const cls = activePage && href.includes(activePage) ? ' class="is-active"' : '';
     return `<a${cls} href="${href}">${item.label}</a>`;
@@ -53,7 +46,7 @@ function headerHTML(prefix, activePage) {
   const navLinks = NAV_ITEMS.map(item => {
     let href = item.href;
     if (prefix === "../") {
-      href = item.href.replace("./pages/", "./").replace("./about", "../about");
+      href = item.href.replace("./pages/", "./").replace("./about.html", "../about.html");
     }
     const cls = activePage && href.includes(activePage) ? ' class="is-active"' : '';
     return `<a${cls} href="${href}">${item.label}</a>`;
@@ -90,27 +83,27 @@ function footerHTML(prefix) {
     </div>
     <div class="mcg-footer-col">
       <h4>Guides</h4>
-      <a href="${pagesHref}what-is-medicare">Medicare Parts</a>
-      <a href="${pagesHref}best-medicare-advantage-plans">Advantage</a>
-      <a href="${pagesHref}what-is-medigap">Medigap</a>
-      <a href="${pagesHref}medicare-part-d-costs">Part D</a>
-      <a href="${pagesHref}when-to-enroll-in-medicare">Enrollment</a>
-      <a href="${pagesHref}average-medicare-cost-per-month">Costs</a>
+      <a href="${pagesHref}what-is-medicare.html">Medicare Parts</a>
+      <a href="${pagesHref}best-medicare-advantage-plans.html">Advantage</a>
+      <a href="${pagesHref}what-is-medigap.html">Medigap</a>
+      <a href="${pagesHref}medicare-part-d-costs.html">Part D</a>
+      <a href="${pagesHref}when-to-enroll-in-medicare.html">Enrollment</a>
+      <a href="${pagesHref}average-medicare-cost-per-month.html">Costs</a>
     </div>
     <div class="mcg-footer-col">
       <h4>Tools</h4>
-      <a href="${pagesHref}medicare-premium-calculator">Premium Calculator</a>
-      <a href="${pagesHref}medicare-vs-advantage-calculator">Coverage Comparison</a>
-      <a href="${pagesHref}drug-cost-estimator">Drug Cost Estimator</a>
+      <a href="${pagesHref}medicare-premium-calculator.html">Premium Calculator</a>
+      <a href="${pagesHref}medicare-vs-advantage-calculator.html">Coverage Comparison</a>
+      <a href="${pagesHref}drug-cost-estimator.html">Drug Cost Estimator</a>
     </div>
     <div class="mcg-footer-col">
       <h4>Legal</h4>
-      <a href="${rootHref}about">About</a>
-      <a href="${rootHref}how-we-research">How We Research</a>
-      <a href="${rootHref}contact">Contact</a>
-      <a href="${rootHref}privacy-policy">Privacy Policy</a>
-      <a href="${rootHref}terms">Terms</a>
-      <a href="${rootHref}disclaimer">Disclaimer</a>
+      <a href="${rootHref}about.html">About</a>
+      <a href="${rootHref}how-we-research.html">How We Research</a>
+      <a href="${rootHref}contact.html">Contact</a>
+      <a href="${rootHref}privacy-policy.html">Privacy Policy</a>
+      <a href="${rootHref}terms.html">Terms</a>
+      <a href="${rootHref}disclaimer.html">Disclaimer</a>
     </div>
   </div>
   <div class="mcg-shell mcg-footer-bottom">
@@ -157,7 +150,7 @@ function headHTML(opts) {
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${description}">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="${prefix}favicon.svg">
   <link rel="stylesheet" href="${prefix}styles.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}" crossorigin="anonymous"></script>`;
 }
@@ -220,7 +213,7 @@ function relatedArticlesHTML(articles) {
     <h2>Continue Reading</h2>
   </div>
   <div class="mcg-related-grid">${articles.map(a => 
-    `<a class="mcg-related-card" href="./${a.slug}"><span>Related Article</span><strong>${a.title}</strong></a>`
+    `<a class="mcg-related-card" href="./${a.slug}.html"><span>Related Article</span><strong>${a.title}</strong></a>`
   ).join("")}</div>
 </div>`;
 }
@@ -275,7 +268,7 @@ function buildArticlePage(article) {
   const crumbs = [
     { label: "Home", href: homeHref },
     { label: article.category || "Guides", href: "#" },
-    { label: article.metaTitle.substring(0, 50), href: `./${slug}` }
+    { label: article.metaTitle.substring(0, 50), href: `./${slug}.html` }
   ];
   
   const content = article.contentFn();
@@ -1308,7 +1301,7 @@ function buildPremiumCalculator() {
     ${breadcrumbHTML(prefix, [
       {label: "Home", href: "../"},
       {label: "Tools", href: "#"},
-      {label: "Premium Calculator", href: "./medicare-premium-calculator"}
+      {label: "Premium Calculator", href: "./medicare-premium-calculator.html"}
     ])}
     <section class="mcg-page-hero">
       <p class="mcg-kicker">Calculator</p>
@@ -1420,7 +1413,7 @@ function buildComparisonCalculator() {
     ${breadcrumbHTML(prefix, [
       {label: "Home", href: "../"},
       {label: "Tools", href: "#"},
-      {label: "Cost Comparison", href: "./medicare-vs-advantage-calculator"}
+      {label: "Cost Comparison", href: "./medicare-vs-advantage-calculator.html"}
     ])}
     <section class="mcg-page-hero">
       <p class="mcg-kicker">Calculator</p>
@@ -1669,8 +1662,8 @@ function buildHomepage() {
           <h1>Medicare costs explained for every budget.</h1>
           <p class="mcg-hero-subtitle">Compare Medicare Parts A, B, C and D with real premium data, coverage breakdowns, and enrollment guides built for seniors and their families.</p>
           <div class="mcg-hero-actions">
-            <a class="mcg-button" href="./pages/what-is-medicare">Compare Medicare Plans</a>
-            <a class="mcg-button mcg-button--outline" href="./pages/medicare-premium-calculator">Use Our Tools</a>
+            <a class="mcg-button" href="./pages/what-is-medicare.html">Compare Medicare Plans</a>
+            <a class="mcg-button mcg-button--outline" href="./pages/medicare-premium-calculator.html">Use Our Tools</a>
           </div>
           <div class="mcg-hero-disclaimer">Educational content only. Not insurance advice.</div>
         </div>
@@ -1701,37 +1694,37 @@ function buildHomepage() {
         <p>Explore each part of Medicare with real cost data, coverage details, and practical guidance for 2025.</p>
       </div>
       <div class="mcg-cards-grid">
-        <a class="mcg-card" href="./pages/medicare-part-a-costs">
+        <a class="mcg-card" href="./pages/medicare-part-a-costs.html">
           <div class="mcg-card-kicker">Part A — Hospital Coverage</div>
           <h3>Medicare Part A</h3>
           <p>Most enrollees pay $0/month for Part A if they worked 40+ quarters. Those who didn't can pay up to $505/month.</p>
           <div class="mcg-card-stat">$1,632 hospital deductible</div>
         </a>
-        <a class="mcg-card" href="./pages/medicare-part-b-costs">
+        <a class="mcg-card" href="./pages/medicare-part-b-costs.html">
           <div class="mcg-card-kicker">Part B — Medical Coverage</div>
           <h3>Medicare Part B</h3>
           <p>The standard Part B premium is $174.70/month in 2025, but higher earners pay IRMAA surcharges up to $594/month.</p>
           <div class="mcg-card-stat">$240 annual deductible</div>
         </a>
-        <a class="mcg-card" href="./pages/medicare-part-c-explained">
+        <a class="mcg-card" href="./pages/medicare-part-c-explained.html">
           <div class="mcg-card-kicker">Part C — Medicare Advantage</div>
           <h3>Medicare Advantage</h3>
           <p>Over 54% of Medicare beneficiaries choose Advantage plans, with average premiums of $18.50/month in 2025.</p>
           <div class="mcg-card-stat">$8,850 out-of-pocket max</div>
         </a>
-        <a class="mcg-card" href="./pages/medicare-part-d-costs">
+        <a class="mcg-card" href="./pages/medicare-part-d-costs.html">
           <div class="mcg-card-kicker">Part D — Drug Coverage</div>
           <h3>Medicare Part D</h3>
           <p>Average Part D premium: $55.50/month. The catastrophic coverage threshold is $8,000 in out-of-pocket drug costs in 2025.</p>
           <div class="mcg-card-stat">$35 insulin cap</div>
         </a>
-        <a class="mcg-card" href="./pages/what-is-medigap">
+        <a class="mcg-card" href="./pages/what-is-medigap.html">
           <div class="mcg-card-kicker">Supplement — Medigap</div>
           <h3>Medigap Plans</h3>
           <p>Plan G is the most popular Medigap plan, covering all gaps except the Part B deductible of $240 in 2025.</p>
           <div class="mcg-card-stat">$100-$200/mo average premium</div>
         </a>
-        <a class="mcg-card" href="./pages/when-to-enroll-in-medicare">
+        <a class="mcg-card" href="./pages/when-to-enroll-in-medicare.html">
           <div class="mcg-card-kicker">Enrollment — Timing</div>
           <h3>Enrollment Periods</h3>
           <p>Missing your Initial Enrollment Period can result in permanent late enrollment penalties of 10% per year for Part B.</p>
@@ -1747,12 +1740,12 @@ function buildHomepage() {
         <h2>In-Depth Medicare Guides for 2025</h2>
       </div>
       <div class="mcg-spotlight-list">
-        <a class="mcg-spotlight-item" href="./pages/medicare-advantage-vs-original-medicare">Medicare Advantage vs Original Medicare: Which Is Better in 2025?</a>
-        <a class="mcg-spotlight-item" href="./pages/medigap-plan-g-costs">Medigap Plan G Cost 2025: What You'll Pay and What's Covered</a>
-        <a class="mcg-spotlight-item" href="./pages/medicare-costs-by-income">Medicare Costs by Income: IRMAA Explained for 2025</a>
-        <a class="mcg-spotlight-item" href="./pages/insulin-cost-medicare">Insulin Cost Under Medicare 2025: $35 Monthly Cap Explained</a>
-        <a class="mcg-spotlight-item" href="./pages/turning-65-medicare-checklist">Turning 65 Medicare Checklist: Everything to Do Before Your Birthday</a>
-        <a class="mcg-spotlight-item" href="./pages/how-to-save-on-medicare">How to Save Money on Medicare: 10 Proven Strategies</a>
+        <a class="mcg-spotlight-item" href="./pages/medicare-advantage-vs-original-medicare.html">Medicare Advantage vs Original Medicare: Which Is Better in 2025?</a>
+        <a class="mcg-spotlight-item" href="./pages/medigap-plan-g-costs.html">Medigap Plan G Cost 2025: What You'll Pay and What's Covered</a>
+        <a class="mcg-spotlight-item" href="./pages/medicare-costs-by-income.html">Medicare Costs by Income: IRMAA Explained for 2025</a>
+        <a class="mcg-spotlight-item" href="./pages/insulin-cost-medicare.html">Insulin Cost Under Medicare 2025: $35 Monthly Cap Explained</a>
+        <a class="mcg-spotlight-item" href="./pages/turning-65-medicare-checklist.html">Turning 65 Medicare Checklist: Everything to Do Before Your Birthday</a>
+        <a class="mcg-spotlight-item" href="./pages/how-to-save-on-medicare.html">How to Save Money on Medicare: 10 Proven Strategies</a>
       </div>
     </section>
 
@@ -1764,17 +1757,17 @@ function buildHomepage() {
         <p>Estimate your Medicare costs with our free calculators built with 2025 rates and data.</p>
       </div>
       <div class="mcg-cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
-        <a class="mcg-tool-card" href="./pages/medicare-premium-calculator">
+        <a class="mcg-tool-card" href="./pages/medicare-premium-calculator.html">
           <div class="tool-icon">💰</div>
           <h3>Medicare Premium Calculator</h3>
           <p>Estimate your total monthly Medicare costs including Part A, Part B, Part D, and Medigap premiums with IRMAA adjustments.</p>
         </a>
-        <a class="mcg-tool-card" href="./pages/medicare-vs-advantage-calculator">
+        <a class="mcg-tool-card" href="./pages/medicare-vs-advantage-calculator.html">
           <div class="tool-icon">⚖️</div>
           <h3>Coverage Comparison Tool</h3>
           <p>Compare annual costs of Original Medicare plus Medigap versus Medicare Advantage for your specific healthcare profile.</p>
         </a>
-        <a class="mcg-tool-card" href="./pages/drug-cost-estimator">
+        <a class="mcg-tool-card" href="./pages/drug-cost-estimator.html">
           <div class="tool-icon">💊</div>
           <h3>Drug Cost Estimator</h3>
           <p>Estimate your Part D prescription drug costs across all coverage phases including the new $8,000 annual cap.</p>
@@ -1790,7 +1783,7 @@ function buildHomepage() {
         <h3>${AUTHOR}</h3>
         <p class="mcg-trust-role">${AUTHOR_ROLE}</p>
         <p>${AUTHOR_BIO}</p>
-        <a href="./about" style="color:var(--accent);font-weight:700;font-size:0.9rem">Learn more about our research methodology →</a>
+        <a href="./about.html" style="color:var(--accent);font-weight:700;font-size:0.9rem">Learn more about our research methodology →</a>
       </div>
     </div>
 
@@ -2057,26 +2050,26 @@ function generateSitemapContent() {
   let html = `<h2>Homepage</h2>\n<ul><li><a href="./">MedicareCostGuide Home</a></li></ul>\n`;
   
   html += `<h2>Tools & Calculators</h2>\n<ul>
-    <li><a href="./pages/medicare-premium-calculator">Medicare Premium Calculator 2025</a></li>
-    <li><a href="./pages/medicare-vs-advantage-calculator">Medicare vs Advantage Cost Calculator</a></li>
-    <li><a href="./pages/drug-cost-estimator">Drug Cost Estimator</a></li>
+    <li><a href="./pages/medicare-premium-calculator.html">Medicare Premium Calculator 2025</a></li>
+    <li><a href="./pages/medicare-vs-advantage-calculator.html">Medicare vs Advantage Cost Calculator</a></li>
+    <li><a href="./pages/drug-cost-estimator.html">Drug Cost Estimator</a></li>
   </ul>\n`;
   
   Object.entries(categories).forEach(([cat, arts]) => {
     html += `<h2>${cat}</h2>\n<ul>`;
     arts.forEach(a => {
-      html += `\n  <li><a href="./pages/${a.slug}">${a.title}</a></li>`;
+      html += `\n  <li><a href="./pages/${a.slug}.html">${a.title}</a></li>`;
     });
     html += "\n</ul>\n";
   });
   
   html += `<h2>Legal & About</h2>\n<ul>
-    <li><a href="./about">About MedicareCostGuide</a></li>
-    <li><a href="./how-we-research">How We Research</a></li>
-    <li><a href="./contact">Contact</a></li>
-    <li><a href="./privacy-policy">Privacy Policy</a></li>
-    <li><a href="./terms">Terms of Use</a></li>
-    <li><a href="./disclaimer">Disclaimer</a></li>
+    <li><a href="./about.html">About MedicareCostGuide</a></li>
+    <li><a href="./how-we-research.html">How We Research</a></li>
+    <li><a href="./contact.html">Contact</a></li>
+    <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+    <li><a href="./terms.html">Terms of Use</a></li>
+    <li><a href="./disclaimer.html">Disclaimer</a></li>
   </ul>\n`;
   
   return html;
@@ -2099,9 +2092,9 @@ const page404 = buildRootPage({
 <p>Sorry, the page you're looking for doesn't exist or has been moved. Here are some helpful links:</p>
 <ul>
   <li><a href="./" style="color:var(--accent)">Return to Homepage</a></li>
-  <li><a href="./pages/what-is-medicare" style="color:var(--accent)">What Is Medicare?</a></li>
-  <li><a href="./pages/medicare-premium-calculator" style="color:var(--accent)">Medicare Premium Calculator</a></li>
-  <li><a href="./sitemap" style="color:var(--accent)">Full Sitemap</a></li>
+  <li><a href="./pages/what-is-medicare.html" style="color:var(--accent)">What Is Medicare?</a></li>
+  <li><a href="./pages/medicare-premium-calculator.html" style="color:var(--accent)">Medicare Premium Calculator</a></li>
+  <li><a href="./sitemap.html" style="color:var(--accent)">Full Sitemap</a></li>
 </ul>`
 });
 // Override robots meta for 404
