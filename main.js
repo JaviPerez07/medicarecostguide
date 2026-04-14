@@ -1,27 +1,5 @@
 /* ── MedicareCostGuide main.js ── */
 
-const site = {
-  name: "MedicareCostGuide",
-  domain: "https://medicarecostguides.com",
-};
-
-function readStorage(key) {
-  try {
-    return window.localStorage.getItem(key);
-  } catch {
-    return null;
-  }
-}
-
-function writeStorage(key, value) {
-  try {
-    window.localStorage.setItem(key, value);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
 function safeBind(label, fn) {
   try {
     fn();
@@ -46,31 +24,15 @@ function wireCookieBanner() {
   const banner = document.querySelector(".mcg-cookie-banner");
   if (!banner) return;
 
-  const buttons = Array.from(banner.querySelectorAll("[data-cookie-action]"));
-  const storageAvailable = (() => {
-    try {
-      const testKey = "mcg-cookie-test";
-      window.localStorage.setItem(testKey, "1");
-      window.localStorage.removeItem(testKey);
-      return true;
-    } catch {
-      return false;
-    }
-  })();
-
-  const choice = storageAvailable ? readStorage("mcg-cookie-choice") : null;
-  banner.hidden = Boolean(choice);
+  const buttons = banner.querySelectorAll("[data-cookie-action]");
+  banner.hidden = false;
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      if (storageAvailable) {
-        writeStorage("mcg-cookie-choice", button.dataset.cookieAction || "dismissed");
-      }
       banner.hidden = true;
     });
   });
 }
-
 /* ── FAQ accordion (details elements already native) ── */
 function wireFAQ() {
   document.querySelectorAll(".mcg-faq-item").forEach((item) => {
@@ -85,20 +47,6 @@ function wireFAQ() {
         content.style.opacity = "1";
         content.style.transform = "translateY(0)";
       });
-    });
-  });
-}
-
-/* ── Clickable cards ── */
-function wireCards() {
-  document.querySelectorAll(".mcg-card[data-href], .mcg-tool-card[data-href], .mcg-spotlight-item[data-href]").forEach((card) => {
-    card.style.cursor = "pointer";
-    card.addEventListener("click", (event) => {
-      if (event.target.closest("a, button")) return;
-      const href = card.dataset.href;
-      if (href) {
-        window.location.href = href;
-      }
     });
   });
 }
@@ -284,7 +232,6 @@ function wireDrugCalculator() {
 safeBind("mobile nav", wireMenu);
 safeBind("cookie banner", wireCookieBanner);
 safeBind("faq", wireFAQ);
-safeBind("clickable cards", wireCards);
 safeBind("local preview links", wireLocalPreviewLinks);
 safeBind("premium calculator", wirePremiumCalculator);
 safeBind("comparison calculator", wireComparisonCalculator);
