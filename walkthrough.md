@@ -71,3 +71,16 @@ medicarecostguide/
 ## Dominio Final
 El dominio final del proyecto es: **medicarecostguides.com** (con S al final).
 Actualizado el 2026-04-14.
+
+## Local Preview
+Run:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open:
+
+```
+http://localhost:8000
+```
