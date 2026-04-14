@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medicare vs Medicare Advantage Cost Calculator</title>
+  <meta name="description" content="Compare total annual costs of Original Medicare plus Medigap vs Medicare Advantage side by side with personalized estimates.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://medicarecostguide.com/pages/medicare-vs-advantage-calculator">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MedicareCostGuide">
+  <meta property="og:title" content="Medicare vs Medicare Advantage Cost Calculator">
+  <meta property="og:description" content="Compare total annual costs of Original Medicare plus Medigap vs Medicare Advantage side by side with personalized estimates.">
+  <meta property="og:url" content="https://medicarecostguide.com/pages/medicare-vs-advantage-calculator">
+  <meta property="og:image" content="https://medicarecostguide.com/favicon.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Medicare vs Medicare Advantage Cost Calculator">
+  <meta name="twitter:description" content="Compare total annual costs of Original Medicare plus Medigap vs Medicare Advantage side by side with personalized estimates.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="../styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3733223915347669" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Medicare vs Medicare Advantage Cost Calculator","description":"Compare total annual costs of Original Medicare plus Medigap vs Medicare Advantage.","author":{"@type":"Person","name":"Dr. Patricia Wells"},"publisher":{"@type":"Organization","name":"MedicareCostGuide","url":"https://medicarecostguide.com"},"url":"https://medicarecostguide.com/pages/medicare-vs-advantage-calculator","dateModified":"2026-04-14"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Original Medicare or Medicare Advantage cheaper?","acceptedAnswer":{"@type":"Answer","text":"It depends on your healthcare usage. Medicare Advantage has lower premiums but higher per-service costs. Original Medicare with Medigap has higher premiums but more predictable total costs."}},{"@type":"Question","name":"Can I switch between Original Medicare and Advantage?","acceptedAnswer":{"@type":"Answer","text":"Yes, during the Annual Enrollment Period (Oct 15 - Dec 7). However, switching from Advantage back to Original Medicare may make it difficult to get Medigap coverage."}}]}</script>
+</head>
+<body>
+  <header class="mcg-site-header">
+  <div class="mcg-shell mcg-header-row">
+    <a class="mcg-brand" href="../" aria-label="MedicareCostGuide home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="36" height="36"><defs><linearGradient id="hbg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1B4F72"/><stop offset="100%" style="stop-color:#2E86C1"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#hbg)"/><text x="50" y="45" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="38" fill="white">M</text><rect x="25" y="55" width="50" height="5" rx="2" fill="#1E8449"/><rect x="30" y="65" width="40" height="5" rx="2" fill="white" opacity="0.7"/><rect x="35" y="75" width="30" height="5" rx="2" fill="white" opacity="0.4"/></svg>
+      <span>Medicare<span class="brand-green">CostGuide</span></span>
+    </a>
+    <button class="mcg-menu-toggle" aria-expanded="false" aria-controls="mobile-nav">☰ Menu</button>
+    <nav class="mcg-main-nav" aria-label="Primary navigation"><a href="./what-is-medicare">Medicare Parts</a><a href="./best-medicare-advantage-plans">Medicare Advantage</a><a href="./what-is-medigap">Medigap</a><a href="./medicare-part-d-costs">Drug Coverage</a><a href="./when-to-enroll-in-medicare">Enrollment</a><a href="./medicare-premium-calculator">Tools</a><a href="../about">About</a></nav>
+  </div>
+  <nav class="mcg-mobile-nav" id="mobile-nav" aria-label="Mobile navigation"><a href="./what-is-medicare">Medicare Parts</a><a href="./best-medicare-advantage-plans">Medicare Advantage</a><a href="./what-is-medigap">Medigap</a><a href="./medicare-part-d-costs">Drug Coverage</a><a href="./when-to-enroll-in-medicare">Enrollment</a><a href="./medicare-premium-calculator">Tools</a><a href="../about">About</a></nav>
+</header>
+  <main class="mcg-shell">
+    <nav class="mcg-breadcrumbs" aria-label="Breadcrumb"><a href="../">Home</a><span>/</span><a href="#">Tools</a><span>/</span><a href="./medicare-vs-advantage-calculator" aria-current="page">Cost Comparison</a></nav>
+    <section class="mcg-page-hero">
+      <p class="mcg-kicker">Calculator</p>
+      <h1>Medicare vs Medicare Advantage Cost Calculator</h1>
+      <p>Compare estimated annual costs of Original Medicare with Medigap Plan G versus a typical Medicare Advantage plan in your state.</p>
+    </section>
+    
+    <div class="mcg-calc-card" style="margin-top:2rem">
+      <h2 style="margin:0 0 1rem;color:var(--primary-dark)">Your Healthcare Profile</h2>
+      <form id="comparison-calc-form" class="mcg-calc-form">
+        <label>State
+          <select name="state">
+            <option value="FL">Florida</option><option value="TX">Texas</option>
+            <option value="CA">California</option><option value="NY">New York</option>
+            <option value="PA">Pennsylvania</option><option value="OH">Ohio</option>
+            <option value="IL">Illinois</option><option value="AZ">Arizona</option>
+            <option value="GA">Georgia</option><option value="NC">North Carolina</option>
+          </select>
+        </label>
+        <label>Age <input type="number" name="age" min="65" max="100" value="67"></label>
+        <label>Monthly Medications <input type="number" name="meds" min="0" max="20" value="3"></label>
+        <label>Doctor Visits Per Year <input type="number" name="visits" min="0" max="50" value="6"></label>
+      </form>
+      <div class="mcg-calc-results">
+        <h3>📊 Side-by-Side Cost Comparison</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
+          <div style="background:white;border:2px solid var(--primary);border-radius:var(--radius);padding:1.2rem">
+            <h4 style="color:var(--primary);margin:0 0 1rem">Original Medicare + Medigap G</h4>
+            <div class="mcg-result-item"><span>Monthly Premium</span><strong id="orig-monthly">$395.20</strong></div>
+            <div class="mcg-result-item" style="margin-top:0.5rem"><span>Annual Deductible</span><strong id="orig-deductible">$240</strong></div>
+            <div class="mcg-result-item" style="margin-top:0.5rem"><span>Out-of-Pocket Max</span><strong id="orig-oop-max">$240/year with Medigap</strong></div>
+            <div class="mcg-result-item" style="margin-top:0.5rem;background:var(--bg-soft)"><span>Est. Total Annual Cost</span><strong id="orig-annual" style="color:var(--primary);font-size:1.25rem">$4,982</strong></div>
+          </div>
+          <div style="background:white;border:2px solid var(--secondary);border-radius:var(--radius);padding:1.2rem">
+            <h4 style="color:var(--secondary);margin:0 0 1rem">Medicare Advantage (Typical)</h4>
+            <div class="mcg-result-item"><span>Monthly Premium</span><strong id="adv-monthly">$193.20</strong></div>
+            <div class="mcg-result-item" style="margin-top:0.5rem"><span>Annual Deductible</span><strong id="adv-deductible">$0–$250 typical</strong></div>
+            <div class="mcg-result-item" style="margin-top:0.5rem"><span>Out-of-Pocket Max</span><strong id="adv-oop-max">$8,850</strong></div>
+            <div class="mcg-result-item" style="margin-top:0.5rem;background:var(--bg-soft)"><span>Est. Total Annual Cost</span><strong id="adv-annual" style="color:var(--secondary);font-size:1.25rem">$2,868</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <article class="mcg-article">
+      <h2>Understanding the Comparison</h2>
+<p>This calculator estimates total annual costs for two common Medicare coverage paths: Original Medicare paired with Medigap Plan G and a standalone Part D plan, versus a typical Medicare Advantage plan with built-in drug coverage. Both paths require paying the standard Part B premium of $174.70/month.</p>
+<p>Original Medicare with Medigap Plan G provides the most predictable costs. After paying the $240 annual Part B deductible, Medigap covers virtually all remaining gaps. Your costs are highly predictable regardless of how much healthcare you use. The tradeoff is higher monthly premiums.</p>
+<p>Medicare Advantage plans offer lower monthly premiums and often include extra benefits like dental and vision. However, you pay copays each time you use services, and costs can vary significantly depending on your healthcare usage. The $8,850 out-of-pocket maximum provides protection against catastrophic costs, but reaching that maximum means spending substantially more than under the Medigap scenario.</p>
+<p>Important: These are estimates based on national averages. Actual costs depend on your specific plan, location, health providers, and healthcare utilization. Use Medicare Plan Finder at Medicare.gov for the most accurate comparison of plans available in your ZIP code.</p>
+      <div class="mcg-trust-box">
+  <div class="mcg-author-circle">PW</div>
+  <div>
+    <p class="mcg-trust-label">Written by</p>
+    <h3>Dr. Patricia Wells</h3>
+    <p class="mcg-trust-role">Medicare Benefits Researcher</p>
+    <p>Dr. Wells has spent 12 years analyzing Medicare costs, coverage gaps, and enrollment strategies to help seniors and their families make confident coverage decisions without overpaying.</p>
+  </div>
+</div>
+      <div class="mcg-disclaimer-box">
+  <strong>⚠ Disclaimer:</strong> This content is for educational purposes only and does not constitute insurance or financial advice. Consult a licensed Medicare advisor for personalized guidance.
+</div>
+    </article>
+  </main>
+  <footer class="mcg-site-footer">
+  <div class="mcg-shell mcg-footer-grid">
+    <div>
+      <a class="mcg-brand mcg-brand--footer" href="../">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="30" height="30"><defs><linearGradient id="hbg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1B4F72"/><stop offset="100%" style="stop-color:#2E86C1"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#hbg)"/><text x="50" y="45" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="38" fill="white">M</text><rect x="25" y="55" width="50" height="5" rx="2" fill="#1E8449"/><rect x="30" y="65" width="40" height="5" rx="2" fill="white" opacity="0.7"/><rect x="35" y="75" width="30" height="5" rx="2" fill="white" opacity="0.4"/></svg>
+        <span>Medicare<span class="brand-green">CostGuide</span></span>
+      </a>
+      <p class="mcg-footer-desc">Medicare costs explained for every budget. Educational guides, calculators, and enrollment resources for U.S. seniors and their families.</p>
+    </div>
+    <div class="mcg-footer-col">
+      <h4>Guides</h4>
+      <a href="./what-is-medicare">Medicare Parts</a>
+      <a href="./best-medicare-advantage-plans">Advantage</a>
+      <a href="./what-is-medigap">Medigap</a>
+      <a href="./medicare-part-d-costs">Part D</a>
+      <a href="./when-to-enroll-in-medicare">Enrollment</a>
+      <a href="./average-medicare-cost-per-month">Costs</a>
+    </div>
+    <div class="mcg-footer-col">
+      <h4>Tools</h4>
+      <a href="./medicare-premium-calculator">Premium Calculator</a>
+      <a href="./medicare-vs-advantage-calculator">Coverage Comparison</a>
+      <a href="./drug-cost-estimator">Drug Cost Estimator</a>
+    </div>
+    <div class="mcg-footer-col">
+      <h4>Legal</h4>
+      <a href="../about">About</a>
+      <a href="../how-we-research">How We Research</a>
+      <a href="../contact">Contact</a>
+      <a href="../privacy-policy">Privacy Policy</a>
+      <a href="../terms">Terms</a>
+      <a href="../disclaimer">Disclaimer</a>
+    </div>
+  </div>
+  <div class="mcg-shell mcg-footer-bottom">
+    <p>&copy; 2026 MedicareCostGuide. All rights reserved.</p>
+    <p>Content is for educational purposes only. Not a substitute for licensed insurance advice.</p>
+  </div>
+</footer>
+  <div class="mcg-cookie-banner" hidden>
+  <div>
+    <strong>Cookie Preferences</strong>
+    <p>We use essential cookies for site functionality and optional analytics cookies. You can accept or reject non-essential cookies.</p>
+  </div>
+  <div class="mcg-cookie-actions">
+    <button class="mcg-button" data-cookie-action="accept">Accept</button>
+    <button class="mcg-button mcg-button--ghost" data-cookie-action="reject">Reject Non-Essential</button>
+  </div>
+</div>
+  <script src="../main.js" defer></script>
+</body>
+</html>

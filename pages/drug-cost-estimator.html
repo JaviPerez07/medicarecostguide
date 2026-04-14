@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medicare Part D Drug Cost Estimator</title>
+  <meta name="description" content="Estimate your annual Medicare Part D drug costs across all coverage phases including deductible, initial coverage, gap, and catastrophic coverage.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://medicarecostguide.com/pages/drug-cost-estimator">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MedicareCostGuide">
+  <meta property="og:title" content="Medicare Part D Drug Cost Estimator">
+  <meta property="og:description" content="Estimate your annual Medicare Part D drug costs across all coverage phases including deductible, initial coverage, gap, and catastrophic coverage.">
+  <meta property="og:url" content="https://medicarecostguide.com/pages/drug-cost-estimator">
+  <meta property="og:image" content="https://medicarecostguide.com/favicon.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Medicare Part D Drug Cost Estimator">
+  <meta name="twitter:description" content="Estimate your annual Medicare Part D drug costs across all coverage phases including deductible, initial coverage, gap, and catastrophic coverage.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="../styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3733223915347669" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Medicare Part D Drug Cost Estimator","description":"Estimate your annual prescription drug costs under Medicare Part D.","author":{"@type":"Person","name":"Dr. Patricia Wells"},"publisher":{"@type":"Organization","name":"MedicareCostGuide","url":"https://medicarecostguide.com"},"url":"https://medicarecostguide.com/pages/drug-cost-estimator","dateModified":"2026-04-14"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Part D out-of-pocket cap for 2025?","acceptedAnswer":{"@type":"Answer","text":"In 2025, once your true out-of-pocket drug costs reach $8,000, you enter catastrophic coverage and pay $0 for the rest of the year."}},{"@type":"Question","name":"How does the Part D deductible work?","acceptedAnswer":{"@type":"Answer","text":"The deductible is $590 in 2025. You pay full drug costs until you have spent $590, then enter the initial coverage phase with copays/coinsurance."}}]}</script>
+</head>
+<body>
+  <header class="mcg-site-header">
+  <div class="mcg-shell mcg-header-row">
+    <a class="mcg-brand" href="../" aria-label="MedicareCostGuide home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="36" height="36"><defs><linearGradient id="hbg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1B4F72"/><stop offset="100%" style="stop-color:#2E86C1"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#hbg)"/><text x="50" y="45" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="38" fill="white">M</text><rect x="25" y="55" width="50" height="5" rx="2" fill="#1E8449"/><rect x="30" y="65" width="40" height="5" rx="2" fill="white" opacity="0.7"/><rect x="35" y="75" width="30" height="5" rx="2" fill="white" opacity="0.4"/></svg>
+      <span>Medicare<span class="brand-green">CostGuide</span></span>
+    </a>
+    <button class="mcg-menu-toggle" aria-expanded="false" aria-controls="mobile-nav">☰ Menu</button>
+    <nav class="mcg-main-nav" aria-label="Primary navigation"><a href="./what-is-medicare">Medicare Parts</a><a href="./best-medicare-advantage-plans">Medicare Advantage</a><a href="./what-is-medigap">Medigap</a><a href="./medicare-part-d-costs">Drug Coverage</a><a href="./when-to-enroll-in-medicare">Enrollment</a><a href="./medicare-premium-calculator">Tools</a><a href="../about">About</a></nav>
+  </div>
+  <nav class="mcg-mobile-nav" id="mobile-nav" aria-label="Mobile navigation"><a href="./what-is-medicare">Medicare Parts</a><a href="./best-medicare-advantage-plans">Medicare Advantage</a><a href="./what-is-medigap">Medigap</a><a href="./medicare-part-d-costs">Drug Coverage</a><a href="./when-to-enroll-in-medicare">Enrollment</a><a href="./medicare-premium-calculator">Tools</a><a href="../about">About</a></nav>
+</header>
+  <main class="mcg-shell">
+    <nav class="mcg-breadcrumbs" aria-label="Breadcrumb"><a href="../">Home</a><span>/</span><a href="#">Tools</a><span>/</span><a href="./drug-cost-estimator" aria-current="page">Drug Cost Estimator</a></nav>
+    <section class="mcg-page-hero">
+      <p class="mcg-kicker">Calculator</p>
+      <h1>Medicare Part D Drug Cost Estimator</h1>
+      <p>Estimate your annual prescription drug costs across all Part D coverage phases using 2025 rates.</p>
+    </section>
+    
+    <div class="mcg-calc-card" style="margin-top:2rem">
+      <h2 style="margin:0 0 1rem;color:var(--primary-dark)">Your Prescription Profile</h2>
+      <form id="drug-calc-form" class="mcg-calc-form">
+        <label>Number of Monthly Medications
+          <input type="number" name="numDrugs" min="1" max="15" value="3">
+        </label>
+        <label>Current Coverage Phase
+          <select name="phase">
+            <option value="deductible">Deductible Phase</option>
+            <option value="initial" selected>Initial Coverage</option>
+            <option value="gap">Coverage Gap</option>
+            <option value="catastrophic">Catastrophic</option>
+          </select>
+        </label>
+        <label>Primary Drug Type
+          <select name="drugType">
+            <option value="generic" selected>Generic</option>
+            <option value="brand">Brand Name</option>
+            <option value="specialty">Specialty</option>
+          </select>
+        </label>
+      </form>
+      <div class="mcg-calc-results">
+        <h3>📊 Estimated Annual Drug Costs</h3>
+        <div class="mcg-result-grid">
+          <div class="mcg-result-item"><span>Monthly Drug Cost (retail)</span><strong id="drug-monthly">$45/mo retail</strong></div>
+          <div class="mcg-result-item"><span>Time in Deductible Phase</span><strong id="drug-deductible-months">~2 months</strong></div>
+          <div class="mcg-result-item"><span>Catastrophic Cap Reached?</span><strong id="drug-gap-reach">Still in coverage</strong></div>
+          <div class="mcg-result-item" style="background:var(--bg-soft);border-color:var(--accent)"><span>Est. Annual Out-of-Pocket</span><strong id="drug-annual" style="color:var(--secondary);font-size:1.25rem">$720</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <article class="mcg-article">
+      <h2>Understanding Medicare Part D Coverage Phases</h2>
+<p>Medicare Part D drug coverage is organized into four phases that determine how much you pay at different points during the year. Understanding these phases is crucial for estimating your annual drug costs and choosing the right Part D plan.</p>
+<p>Phase 1 — Deductible: In 2025, the maximum Part D deductible is $590. You pay full price for your drugs until you have spent this amount. Not all plans have a deductible, and some plans have a deductible that only applies to certain drug tiers. Once you have met the deductible, you enter the initial coverage phase.</p>
+<p>Phase 2 — Initial Coverage: After meeting the deductible, you pay copays or coinsurance (typically 25%) for covered drugs. This phase continues until your total drug costs (what you and your plan have paid combined) reach a predetermined threshold. During this phase, generic drugs typically have the lowest copays while specialty medications have the highest.</p>
+<p>Phase 3 — Coverage Gap: Previously known as the 'donut hole,' this phase now requires you to pay 25% of drug costs. The coverage gap continues until your true out-of-pocket spending reaches $8,000 in 2025. Once you hit this threshold, you enter catastrophic coverage.</p>
+<p>Phase 4 — Catastrophic Coverage: Thanks to the Inflation Reduction Act, once your out-of-pocket drug costs reach $8,000 in 2025, you pay $0 for all covered drugs for the remainder of the year. This is a major improvement from previous years and provides significant financial relief for beneficiaries taking expensive medications.</p>
+      <div class="mcg-table-wrap"><table class="mcg-table">
+<thead><tr><th>Coverage Phase</th><th>What You Pay</th><th>Key Threshold</th></tr></thead>
+<tbody><tr><td>Deductible</td><td>100% of drug costs</td><td>Until $590 spent</td></tr>
+<tr><td>Initial Coverage</td><td>~25% copay/coinsurance</td><td>Until total drug costs reach trigger</td></tr>
+<tr><td>Coverage Gap</td><td>25% of drug costs</td><td>Until $8,000 out-of-pocket</td></tr>
+<tr><td>Catastrophic</td><td>$0</td><td>After $8,000 out-of-pocket</td></tr></tbody>
+</table></div>
+      <div class="mcg-trust-box">
+  <div class="mcg-author-circle">PW</div>
+  <div>
+    <p class="mcg-trust-label">Written by</p>
+    <h3>Dr. Patricia Wells</h3>
+    <p class="mcg-trust-role">Medicare Benefits Researcher</p>
+    <p>Dr. Wells has spent 12 years analyzing Medicare costs, coverage gaps, and enrollment strategies to help seniors and their families make confident coverage decisions without overpaying.</p>
+  </div>
+</div>
+      <div class="mcg-disclaimer-box">
+  <strong>⚠ Disclaimer:</strong> This content is for educational purposes only and does not constitute insurance or financial advice. Consult a licensed Medicare advisor for personalized guidance.
+</div>
+    </article>
+  </main>
+  <footer class="mcg-site-footer">
+  <div class="mcg-shell mcg-footer-grid">
+    <div>
+      <a class="mcg-brand mcg-brand--footer" href="../">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="30" height="30"><defs><linearGradient id="hbg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1B4F72"/><stop offset="100%" style="stop-color:#2E86C1"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#hbg)"/><text x="50" y="45" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="38" fill="white">M</text><rect x="25" y="55" width="50" height="5" rx="2" fill="#1E8449"/><rect x="30" y="65" width="40" height="5" rx="2" fill="white" opacity="0.7"/><rect x="35" y="75" width="30" height="5" rx="2" fill="white" opacity="0.4"/></svg>
+        <span>Medicare<span class="brand-green">CostGuide</span></span>
+      </a>
+      <p class="mcg-footer-desc">Medicare costs explained for every budget. Educational guides, calculators, and enrollment resources for U.S. seniors and their families.</p>
+    </div>
+    <div class="mcg-footer-col">
+      <h4>Guides</h4>
+      <a href="./what-is-medicare">Medicare Parts</a>
+      <a href="./best-medicare-advantage-plans">Advantage</a>
+      <a href="./what-is-medigap">Medigap</a>
+      <a href="./medicare-part-d-costs">Part D</a>
+      <a href="./when-to-enroll-in-medicare">Enrollment</a>
+      <a href="./average-medicare-cost-per-month">Costs</a>
+    </div>
+    <div class="mcg-footer-col">
+      <h4>Tools</h4>
+      <a href="./medicare-premium-calculator">Premium Calculator</a>
+      <a href="./medicare-vs-advantage-calculator">Coverage Comparison</a>
+      <a href="./drug-cost-estimator">Drug Cost Estimator</a>
+    </div>
+    <div class="mcg-footer-col">
+      <h4>Legal</h4>
+      <a href="../about">About</a>
+      <a href="../how-we-research">How We Research</a>
+      <a href="../contact">Contact</a>
+      <a href="../privacy-policy">Privacy Policy</a>
+      <a href="../terms">Terms</a>
+      <a href="../disclaimer">Disclaimer</a>
+    </div>
+  </div>
+  <div class="mcg-shell mcg-footer-bottom">
+    <p>&copy; 2026 MedicareCostGuide. All rights reserved.</p>
+    <p>Content is for educational purposes only. Not a substitute for licensed insurance advice.</p>
+  </div>
+</footer>
+  <div class="mcg-cookie-banner" hidden>
+  <div>
+    <strong>Cookie Preferences</strong>
+    <p>We use essential cookies for site functionality and optional analytics cookies. You can accept or reject non-essential cookies.</p>
+  </div>
+  <div class="mcg-cookie-actions">
+    <button class="mcg-button" data-cookie-action="accept">Accept</button>
+    <button class="mcg-button mcg-button--ghost" data-cookie-action="reject">Reject Non-Essential</button>
+  </div>
+</div>
+  <script src="../main.js" defer></script>
+</body>
+</html>
