@@ -1,6 +1,6 @@
 # MedicareCostGuide — Project Walkthrough
 
-**Domain:** medicarecostguide.com  
+**Domain:** medicarecostguides.com  
 **Total HTML Pages:** 77  
 **Generator:** generate.js (Node.js)  
 **Last Updated:** 2026-04-14
@@ -67,3 +67,7 @@ medicarecostguide/
 - Secondary (Health Green): #1E8449
 - Accent: #2E86C1
 - Background: #F8F9FA
+
+## Dominio Final
+El dominio final del proyecto es: **medicarecostguides.com** (con S al final).
+Actualizado el 2026-04-14.

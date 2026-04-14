@@ -7,7 +7,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const DOMAIN = "https://medicarecostguide.com";
+const DOMAIN = "https://medicarecostguides.com";
 const SITE_NAME = "MedicareCostGuide";
 const AUTHOR = "Dr. Patricia Wells";
 const AUTHOR_INITIALS = "PW";
@@ -1912,7 +1912,7 @@ ${makeSection("What We Cannot Help With", [
     content: `
 ${makeSection("Privacy Policy — MedicareCostGuide", [
   "Effective Date: January 1, 2026. Last Updated: April 14, 2026.",
-  "MedicareCostGuide (\"we,\" \"us,\" or \"our\") operates the website medicarecostguide.com. This privacy policy explains how we collect, use, disclose, and protect your personal information when you visit our website. By using our site, you consent to the practices described in this policy."
+  "MedicareCostGuide (\"we,\" \"us,\" or \"our\") operates the website medicarecostguides.com. This privacy policy explains how we collect, use, disclose, and protect your personal information when you visit our website. By using our site, you consent to the practices described in this policy."
 ])}
 
 ${makeSection("Information We Collect", [
@@ -1954,7 +1954,7 @@ ${makeSection("Contact", [
     content: `
 ${makeSection("Terms of Use — MedicareCostGuide", [
   "Effective Date: January 1, 2026. Last Updated: April 14, 2026.",
-  "By accessing and using MedicareCostGuide (medicarecostguide.com), you agree to comply with and be bound by the following terms and conditions. If you do not agree with these terms, please do not use our website."
+  "By accessing and using MedicareCostGuide (medicarecostguides.com), you agree to comply with and be bound by the following terms and conditions. If you do not agree with these terms, please do not use our website."
 ])}
 
 ${makeSection("Educational Purpose Only", [
@@ -1982,7 +1982,7 @@ ${makeSection("Intellectual Property", [
     category: "Legal",
     content: `
 ${makeSection("Medical & Financial Disclaimer", [
-  "IMPORTANT: The information provided on MedicareCostGuide (medicarecostguide.com) is for educational and informational purposes only. This website does not provide medical advice, insurance advice, financial advice, or legal advice of any kind."
+  "IMPORTANT: The information provided on MedicareCostGuide (medicarecostguides.com) is for educational and informational purposes only. This website does not provide medical advice, insurance advice, financial advice, or legal advice of any kind."
 ])}
 
 ${makeSection("Not Insurance or Medical Advice", [

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /*?q=*
 Disallow: /*?s=*
-Sitemap: https://medicarecostguide.com/sitemap.xml
+Sitemap: https://medicarecostguides.com/sitemap.xml

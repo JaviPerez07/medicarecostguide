@@ -2,7 +2,7 @@
 
 const site = {
   name: "MedicareCostGuide",
-  domain: "https://medicarecostguide.com",
+  domain: "https://medicarecostguides.com",
 };
 
 /* ── Mobile nav toggle ── */
@@ -83,7 +83,7 @@ function cleanPathnameToFile(pathname) {
 function localTargetFromHref(href) {
   if (!href) return null;
   if (/^(mailto:|tel:|#|javascript:)/i.test(href)) return null;
-  if (/^https?:\/\//i.test(href) && !href.includes("medicarecostguide.com")) return null;
+  if (/^https?:\/\//i.test(href) && !href.includes("medicarecostguides.com")) return null;
   try {
     let pathname;
     if (/^https?:/i.test(href)) {
