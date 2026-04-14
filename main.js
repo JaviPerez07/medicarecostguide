@@ -63,57 +63,11 @@ function wireCards() {
   });
 }
 
-/* ── Local file:// preview link rewriting ── */
-function rootPrefix() {
-  if (location.protocol !== "file:") return "";
-  const path = location.pathname;
-  const marker = "/medicarecostguide/";
-  const idx = path.indexOf(marker);
-  if (idx === -1) return "";
-  return path.slice(0, idx + marker.length);
-}
-
-function cleanPathnameToFile(pathname) {
-  if (!pathname || pathname === "/") return "/index.html";
-  if (pathname.endsWith("/")) return `${pathname}index.html`;
-  if (/\.[a-z0-9]+$/i.test(pathname)) return pathname;
-  return `${pathname}.html`;
-}
-
-function localTargetFromHref(href) {
-  if (!href) return null;
-  if (/^(mailto:|tel:|#|javascript:)/i.test(href)) return null;
-  if (/^https?:\/\//i.test(href) && !href.includes("medicarecostguides.com")) return null;
-  try {
-    let pathname;
-    if (/^https?:/i.test(href)) {
-      const parsed = new URL(href);
-      pathname = parsed.pathname;
-    } else {
-      const parsed = new URL(href, location.href);
-      pathname = parsed.pathname;
-      const marker = "/medicarecostguide/";
-      const idx = pathname.indexOf(marker);
-      if (idx !== -1) pathname = pathname.slice(idx + marker.length - 1);
-    }
-    const filePath = cleanPathnameToFile(pathname);
-    return `${rootPrefix()}${filePath.replace(/^\//, "")}`;
-  } catch {
-    return null;
-  }
-}
-
+/* ── Local navigation uses real relative href values ── */
 function wireLocalPreviewLinks() {
-  if (location.protocol !== "file:") return;
-  document.addEventListener("click", (event) => {
-    const anchor = event.target.closest("a[href]");
-    if (!anchor) return;
-    const localTarget = localTargetFromHref(anchor.getAttribute("href"));
-    if (!localTarget) return;
-    event.preventDefault();
-    location.href = localTarget;
-  });
+  // Intentionally empty: direct relative hrefs handle file:// and http:// navigation.
 }
+
 
 /* ── Calculator: Medicare Premium Calculator ── */
 function wirePremiumCalculator() {
@@ -307,7 +261,7 @@ wireMenu();
 wireCookieBanner();
 wireFAQ();
 wireCards();
-wireLocalPreviewLinks();
+
 wirePremiumCalculator();
 wireComparisonCalculator();
 wireDrugCalculator();

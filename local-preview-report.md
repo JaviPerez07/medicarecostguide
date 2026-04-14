@@ -24,9 +24,9 @@ Project: `/Users/javiperezz7/Documents/medicarecostguide`
   - Internal href/src refs checked: 3046
   - Expected asset refs confirmed: 308
   - Forbidden absolute matches: 0
-- `find . -name "*.html" -exec grep -H 'href="/' {} \;` -> 0 matches
-- `find . -name "*.html" -exec grep -H 'src="/' {} \;` -> 0 matches
-- `find . -name "*.html" -exec grep -H 'href="/pages/' {} \;` -> 0 matches
+- Absolute href root-pattern check returned 0 matches in HTML files.
+- Absolute src root-pattern check returned 0 matches in HTML files.
+- Root-level pages path pattern check returned 0 matches in HTML files.
 
 ### HTTP preview
 Local preview started with:
