@@ -5,6 +5,31 @@ const site = {
   domain: "https://medicarecostguides.com",
 };
 
+function readStorage(key) {
+  try {
+    return window.localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function writeStorage(key, value) {
+  try {
+    window.localStorage.setItem(key, value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function safeBind(label, fn) {
+  try {
+    fn();
+  } catch (error) {
+    console.error(`[MCG] ${label} failed`, error);
+  }
+}
+
 /* ── Mobile nav toggle ── */
 function wireMenu() {
   const btn = document.querySelector(".mcg-menu-toggle");
@@ -20,11 +45,27 @@ function wireMenu() {
 function wireCookieBanner() {
   const banner = document.querySelector(".mcg-cookie-banner");
   if (!banner) return;
-  const choice = localStorage.getItem("mcg-cookie-choice");
-  if (!choice) banner.hidden = false;
-  banner.querySelectorAll("[data-cookie-action]").forEach((button) => {
+
+  const buttons = Array.from(banner.querySelectorAll("[data-cookie-action]"));
+  const storageAvailable = (() => {
+    try {
+      const testKey = "mcg-cookie-test";
+      window.localStorage.setItem(testKey, "1");
+      window.localStorage.removeItem(testKey);
+      return true;
+    } catch {
+      return false;
+    }
+  })();
+
+  const choice = storageAvailable ? readStorage("mcg-cookie-choice") : null;
+  banner.hidden = Boolean(choice);
+
+  buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      localStorage.setItem("mcg-cookie-choice", button.dataset.cookieAction);
+      if (storageAvailable) {
+        writeStorage("mcg-cookie-choice", button.dataset.cookieAction || "dismissed");
+      }
       banner.hidden = true;
     });
   });
@@ -32,21 +73,18 @@ function wireCookieBanner() {
 
 /* ── FAQ accordion (details elements already native) ── */
 function wireFAQ() {
-  // FAQs use <details> so they work natively; this just adds smooth animation
   document.querySelectorAll(".mcg-faq-item").forEach((item) => {
     item.addEventListener("toggle", () => {
-      if (item.open) {
-        const content = item.querySelector("p");
-        if (content) {
-          content.style.opacity = "0";
-          content.style.transform = "translateY(-8px)";
-          requestAnimationFrame(() => {
-            content.style.transition = "opacity 0.25s ease, transform 0.25s ease";
-            content.style.opacity = "1";
-            content.style.transform = "translateY(0)";
-          });
-        }
-      }
+      if (!item.open) return;
+      const content = item.querySelector("p");
+      if (!content) return;
+      content.style.opacity = "0";
+      content.style.transform = "translateY(-8px)";
+      requestAnimationFrame(() => {
+        content.style.transition = "opacity 0.25s ease, transform 0.25s ease";
+        content.style.opacity = "1";
+        content.style.transform = "translateY(0)";
+      });
     });
   });
 }
@@ -55,10 +93,12 @@ function wireFAQ() {
 function wireCards() {
   document.querySelectorAll(".mcg-card[data-href], .mcg-tool-card[data-href], .mcg-spotlight-item[data-href]").forEach((card) => {
     card.style.cursor = "pointer";
-    card.addEventListener("click", (e) => {
-      if (e.target.closest("a, button")) return;
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a, button")) return;
       const href = card.dataset.href;
-      if (href) window.location.href = href;
+      if (href) {
+        window.location.href = href;
+      }
     });
   });
 }
@@ -68,48 +108,42 @@ function wireLocalPreviewLinks() {
   // Intentionally empty: direct relative hrefs handle file:// and http:// navigation.
 }
 
-
 /* ── Calculator: Medicare Premium Calculator ── */
 function wirePremiumCalculator() {
   const form = document.getElementById("premium-calc-form");
   if (!form) return;
 
   function calculate() {
-    const age = parseInt(form.querySelector('[name="age"]')?.value || "65");
+    const age = parseInt(form.querySelector('[name="age"]')?.value || "65", 10);
     const partAEligible = form.querySelector('[name="partA"]')?.value || "yes";
     const income = form.querySelector('[name="income"]')?.value || "under103k";
     const wantPartD = form.querySelector('[name="partD"]')?.value || "no";
     const wantMedigap = form.querySelector('[name="medigap"]')?.value || "no";
     const medigapPlan = form.querySelector('[name="medigapPlan"]')?.value || "G";
 
-    // Part A
     let partACost = 0;
     if (partAEligible === "no") partACost = 505;
 
-    // Part B with IRMAA
     const irmaaTable = {
-      "under103k": 174.70,
-      "103k-129k": 244.60,
-      "129k-161k": 349.40,
-      "161k-193k": 454.20,
-      "193k-500k": 559.00,
-      "over500k": 594.00
+      under103k: 174.7,
+      "103k-129k": 244.6,
+      "129k-161k": 349.4,
+      "161k-193k": 454.2,
+      "193k-500k": 559.0,
+      over500k: 594.0,
     };
-    let partBCost = irmaaTable[income] || 174.70;
+    const partBCost = irmaaTable[income] || 174.7;
 
-    // Part D
     let partDCost = 0;
-    if (wantPartD === "yes") partDCost = 55.50;
+    if (wantPartD === "yes") partDCost = 55.5;
 
-    // Medigap
     let medigapCost = 0;
     if (wantMedigap === "yes") {
       const medigapPrices = {
-        "A": 120, "B": 130, "C": 200, "D": 140, "F": 220,
-        "G": 165, "K": 80, "L": 110, "M": 130, "N": 135
+        A: 120, B: 130, C: 200, D: 140, F: 220,
+        G: 165, K: 80, L: 110, M: 130, N: 135,
       };
       medigapCost = medigapPrices[medigapPlan] || 165;
-      // Age adjustment
       if (age > 70) medigapCost += (age - 70) * 3;
     }
 
@@ -137,26 +171,24 @@ function wireComparisonCalculator() {
   if (!form) return;
 
   function calculate() {
-    const age = parseInt(form.querySelector('[name="age"]')?.value || "65");
-    const meds = parseInt(form.querySelector('[name="meds"]')?.value || "3");
-    const visits = parseInt(form.querySelector('[name="visits"]')?.value || "6");
+    const age = parseInt(form.querySelector('[name="age"]')?.value || "65", 10);
+    const meds = parseInt(form.querySelector('[name="meds"]')?.value || "3", 10);
+    const visits = parseInt(form.querySelector('[name="visits"]')?.value || "6", 10);
     const state = form.querySelector('[name="state"]')?.value || "FL";
 
-    // Original Medicare + Medigap Plan G
-    const partB = 174.70;
+    const partB = 174.7;
     const medigapG = 165 + (age > 70 ? (age - 70) * 3 : 0);
-    const partD = 55.50;
+    const partD = 55.5;
     const partBDeductible = 240;
     const origMonthly = partB + medigapG + partD;
     const origAnnual = origMonthly * 12 + partBDeductible;
 
-    // Medicare Advantage estimate
     const stateFactors = {
-      "FL": 0.9, "TX": 0.95, "CA": 1.1, "NY": 1.15, "PA": 1.0,
-      "OH": 0.92, "IL": 1.0, "AZ": 0.88, "GA": 0.93, "NC": 0.95
+      FL: 0.9, TX: 0.95, CA: 1.1, NY: 1.15, PA: 1.0,
+      OH: 0.92, IL: 1.0, AZ: 0.88, GA: 0.93, NC: 0.95,
     };
     const factor = stateFactors[state] || 1.0;
-    const advPremium = 18.50 * factor;
+    const advPremium = 18.5 * factor;
     const advDrugCopay = meds * 15 * 12;
     const advVisitCopay = visits * 25;
     const advMonthly = partB + advPremium;
@@ -189,54 +221,47 @@ function wireDrugCalculator() {
   if (!form) return;
 
   function calculate() {
-    const numDrugs = parseInt(form.querySelector('[name="numDrugs"]')?.value || "3");
-    const phase = form.querySelector('[name="phase"]')?.value || "initial";
+    const numDrugs = parseInt(form.querySelector('[name="numDrugs"]')?.value || "3", 10);
     const drugType = form.querySelector('[name="drugType"]')?.value || "generic";
 
     const baseCosts = { generic: 15, brand: 85, specialty: 350 };
-    const monthlyCost = baseCosts[drugType] * numDrugs;
+    const monthlyCost = (baseCosts[drugType] || baseCosts.generic) * numDrugs;
 
     const deductible = 590;
-    const initialCopayRate = drugType === "generic" ? 0.25 : drugType === "brand" ? 0.25 : 0.25;
-    const gapCopayRate = 0.25;
-    const catastrophicRate = 0;
+    const initialCopayRate = 0.25;
     const oopThreshold = 8000;
 
     let annualCost = 0;
     let monthsInDeductible = 0;
     let monthsInInitial = 0;
-    let monthsInGap = 0;
     let monthsInCatastrophic = 0;
     let runningOOP = 0;
-    let hitGap = false;
     let hitCatastrophic = false;
 
-    for (let m = 1; m <= 12; m++) {
-      if (runningOOP < deductible && !hitGap && !hitCatastrophic) {
+    for (let m = 1; m <= 12; m += 1) {
+      if (runningOOP < deductible && !hitCatastrophic) {
         const remaining = deductible - runningOOP;
         if (monthlyCost <= remaining) {
           annualCost += monthlyCost;
           runningOOP += monthlyCost;
-          monthsInDeductible++;
+          monthsInDeductible += 1;
         } else {
           annualCost += remaining + (monthlyCost - remaining) * initialCopayRate;
           runningOOP += remaining + (monthlyCost - remaining) * initialCopayRate;
-          monthsInInitial++;
+          monthsInInitial += 1;
         }
       } else if (runningOOP < oopThreshold && !hitCatastrophic) {
         const copay = monthlyCost * initialCopayRate;
         if (runningOOP + copay >= oopThreshold) {
           hitCatastrophic = true;
-          monthsInCatastrophic++;
-          annualCost += 0;
+          monthsInCatastrophic += 1;
         } else {
           annualCost += copay;
           runningOOP += copay;
-          monthsInInitial++;
+          monthsInInitial += 1;
         }
       } else {
-        monthsInCatastrophic++;
-        annualCost += 0;
+        monthsInCatastrophic += 1;
       }
     }
 
@@ -256,12 +281,11 @@ function wireDrugCalculator() {
   calculate();
 }
 
-/* ── Init ── */
-wireMenu();
-wireCookieBanner();
-wireFAQ();
-wireCards();
-
-wirePremiumCalculator();
-wireComparisonCalculator();
-wireDrugCalculator();
+safeBind("mobile nav", wireMenu);
+safeBind("cookie banner", wireCookieBanner);
+safeBind("faq", wireFAQ);
+safeBind("clickable cards", wireCards);
+safeBind("local preview links", wireLocalPreviewLinks);
+safeBind("premium calculator", wirePremiumCalculator);
+safeBind("comparison calculator", wireComparisonCalculator);
+safeBind("drug calculator", wireDrugCalculator);
