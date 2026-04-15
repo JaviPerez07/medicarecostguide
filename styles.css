@@ -695,6 +695,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.15; }
 .mcg-footer-bottom p { margin: 0.3rem 0; }
 
 /* ── COOKIE BANNER ── */
+.mcg-cookie-banner[hidden] { display: none !important; }
 .mcg-cookie-banner {
   position: fixed;
   left: 1rem;
